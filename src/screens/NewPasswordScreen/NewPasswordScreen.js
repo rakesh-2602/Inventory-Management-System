@@ -28,13 +28,15 @@ const NewPasswordScreen = () => {
     <ScrollView showsVerticalScrollIndicator={false}>
     <View style={styles.root}>
         <Text style={styles.title}>Reset your password</Text>
-      
-        <CustomInput placeholder='Code' 
+
+        <Text style={styles.label}>Confirmation code</Text>
+        <CustomInput placeholder='Enter the code sent on your email' 
             name='code'
             control={control}
             rules={{required: 'Code is required'}}
         />
 
+      <Text style={styles.label}>New password</Text>
       <CustomInput placeholder='Enter your new password' 
           name='password'
           control={control}
@@ -69,6 +71,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#051C60',
         margin: 10,
+        padding: 50,
     },
     text:{
         color: 'gray',
@@ -76,6 +79,10 @@ const styles = StyleSheet.create({
     },
     link:{
         color: '#FDB075',
+    },
+    label: {
+      alignSelf: 'stretch',
+      color: 'black'
     },
 })
 

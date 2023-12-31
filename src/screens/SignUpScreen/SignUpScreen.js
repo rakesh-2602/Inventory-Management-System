@@ -40,7 +40,8 @@ const SignUpScreen = () => {
     <ScrollView showsVerticalScrollIndicator={false}>
     <View style={styles.root}>
         <Text style={styles.title}>Create an account</Text>
-      
+
+        <Text style={styles.label}>Username</Text>     
       <CustomInput placeholder='Username' 
          name="username"
          control={control}
@@ -51,12 +52,14 @@ const SignUpScreen = () => {
       }}
       />
 
+      <Text style={styles.label}>Email</Text>
     <CustomInput placeholder='Email' 
       name="email"
       control={control}
       rules={{required: 'Email is required',pattern: {value: EMAIL_REGEX, message: 'Email is invalid'}}}
     />
 
+        <Text style={styles.label}>Password</Text>
       <CustomInput placeholder='Password' 
       name="password"
       control={control}
@@ -67,6 +70,7 @@ const SignUpScreen = () => {
       }}
       />
 
+      <Text style={styles.label}>Repeat-Password</Text>
     <CustomInput placeholder='Repeat Password' 
       name="password-repeat"
       control={control}
@@ -115,6 +119,10 @@ const styles = StyleSheet.create({
     link:{
         color: '#FDB075',
     },
+    label: {
+      alignSelf: 'stretch',
+      color: 'black'
+    }
 })
 
 export default SignUpScreen

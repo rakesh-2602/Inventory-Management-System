@@ -6,6 +6,9 @@ import SocialSignInButtons from '../../components/SocialSignInButtons';
 import { useNavigation, validatePathConfig } from '@react-navigation/native';
 import {useForm} from 'react-hook-form';
 
+//const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&`*+/=?^_`{|}^-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+const EMAIL_REGEX = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/
+
 const ForgotPasswordScreen = () => {
 
   const {control, handleSubmit} = useForm();
@@ -29,11 +32,12 @@ const ForgotPasswordScreen = () => {
     <View style={styles.root}>
         <Text style={styles.title}>Reset your password</Text>
       
-      <CustomInput placeholder='Username' 
-           name='username'
+      
+      <Text style={styles.label}>Email</Text>
+      <CustomInput placeholder='Email' 
+           name='email'
            control={control}
-           rules={{
-            required: 'Username is required'
+           rules={{required: 'Email is required',pattern: {value: EMAIL_REGEX, message: 'Email is invalid'}
            }}
       />
 
@@ -60,6 +64,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#051C60',
         margin: 10,
+        padding: 50,
     },
     text:{
         color: 'gray',
@@ -67,6 +72,10 @@ const styles = StyleSheet.create({
     },
     link:{
         color: '#FDB075',
+    },
+    label: {
+      alignSelf: 'stretch',
+      color: 'black'
     },
 })
 

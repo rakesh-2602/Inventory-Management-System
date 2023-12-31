@@ -4,8 +4,7 @@ import { Controller } from 'react-hook-form'
 
 const CustomInput = ({control, name, rules = {}, placeholder, secureTextEntry}) => {
   return (
-    
-
+  
     <Controller
       control={control}
       name={name}
@@ -37,11 +36,11 @@ const styles = StyleSheet.create({
         width: '100%',
 
         borderColor: '#e8e8e8',
-        borderWidth: 1,
+        borderWidth: 5,
         borderRadius: 5,
 
         paddingHorizontal: 10,
-        marginVertical: 5,
+        marginVertical: 8,
     },
     input: {
     },

@@ -12,7 +12,7 @@ const SignInScreen = () => {
     const {height} = useWindowDimensions();
     const navigation = useNavigation();
 
-    const {control, handleSubmit, formState: {errors},} = useForm();
+    const {control, handleSubmit, formState: {errors}} = useForm();
 
     const onSignInPressed = (data) => {
       console.log(data)
@@ -37,6 +37,7 @@ const SignInScreen = () => {
     <View style={styles.root}>
       <Image source={Logo} style={[styles.logo, {height: height * 0.3}]} resizeMode='contain' />
 
+    <Text style={styles.label}>Username</Text>
       <CustomInput
         name='username' 
         placeholder='Username'
@@ -48,6 +49,7 @@ const SignInScreen = () => {
       }}
       />
 
+      <Text style={styles.label}>Password</Text>
       <CustomInput 
         name='password'
         placeholder='Password'
@@ -80,13 +82,18 @@ const SignInScreen = () => {
 const styles = StyleSheet.create({
     root:{
         alignItems: 'center',
-        padding: 20,
+        padding: 10,
     },
     logo:{
         width: '70%',
         maxWidth: 300,
         maxHeight: 200,
+        padding: 120,
     },
+    label: {
+      alignSelf: 'stretch',
+      color: 'black'
+    }
 })
 
 export default SignInScreen
