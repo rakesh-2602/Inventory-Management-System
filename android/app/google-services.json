@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "802756772030",
+    "project_id": "ashageneralstore-c120e",
+    "storage_bucket": "ashageneralstore-c120e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802756772030:android:c3737c0400febcf0061eef",
+        "android_client_info": {
+          "package_name": "com.inventory"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU6LkBpQo2RyJarIlLwf_kjGZKhjjRcnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
