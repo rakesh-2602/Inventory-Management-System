@@ -8,7 +8,7 @@ import {
   TextInput,
 } from 'react-native';
 import React, {useState} from 'react';
-import Logo from '../../../assets/images/Logo_1.png';
+import Logo from '../../../assets/images/grocery.jpg';
 import CustomInput from '../../components/CustomInput';
 import CustomBotton from '../../components/CustomBotton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
