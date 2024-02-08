@@ -46,6 +46,30 @@ const SignInScreen = () => {
       });
   };
 
+  // const onSignInPressed = async () => {
+  //   try {
+  //     const formData = await handleSubmit(data => data)();
+  //     const { username, password } = formData;
+  //     await auth()
+  //       .signInWithEmailAndPassword(username, password)
+  //       .then(() => {
+  //         console.log('User account created & signed in!');
+  //         navigation.replace('HomeScreen');
+  //       })
+  //       .catch(error => {
+  //         if (error.code === 'auth/email-already-in-use') {
+  //           console.log('That email address is already in use!');
+  //         }
+  //         if (error.code === 'auth/invalid-email') {
+  //           console.log('That email address is invalid!');
+  //         }
+  //         console.error(error);
+  //       });
+  //   } catch (error) {
+  //     console.error('Error signing in:', error.message);
+  //   }
+  // };
+
   const onForgotPasswordPressed = () => {
     //console.warn("Forgot Password");
     navigation.navigate('ForgotPassword');
