@@ -16,6 +16,9 @@ import {useNavigation} from '@react-navigation/native';
 import {useForm, Controller} from 'react-hook-form';
 import auth from '@react-native-firebase/auth';
 
+//const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&`*+/=?^_`{|}^-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+const EMAIL_REGEX = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/
+
 const SignInScreen = () => {
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
@@ -28,7 +31,7 @@ const SignInScreen = () => {
 
   const onSignInPressed = async data => {
     await auth()
-      .signInWithEmailAndPassword(data.username, data.password)
+      .signInWithEmailAndPassword(data.email, data.password)
       .then(() => {
         console.log('User account created & signed in!');
         navigation.replace('HomeScreen');
@@ -45,30 +48,6 @@ const SignInScreen = () => {
         console.error(error);
       });
   };
-
-  // const onSignInPressed = async () => {
-  //   try {
-  //     const formData = await handleSubmit(data => data)();
-  //     const { username, password } = formData;
-  //     await auth()
-  //       .signInWithEmailAndPassword(username, password)
-  //       .then(() => {
-  //         console.log('User account created & signed in!');
-  //         navigation.replace('HomeScreen');
-  //       })
-  //       .catch(error => {
-  //         if (error.code === 'auth/email-already-in-use') {
-  //           console.log('That email address is already in use!');
-  //         }
-  //         if (error.code === 'auth/invalid-email') {
-  //           console.log('That email address is invalid!');
-  //         }
-  //         console.error(error);
-  //       });
-  //   } catch (error) {
-  //     console.error('Error signing in:', error.message);
-  //   }
-  // };
 
   const onForgotPasswordPressed = () => {
     //console.warn("Forgot Password");
@@ -89,7 +68,14 @@ const SignInScreen = () => {
           resizeMode="contain"
         />
 
-        <Text style={styles.label}>Username</Text>
+        <Text style={styles.label}>Email</Text>
+        <CustomInput placeholder='Email' 
+            name="email"
+            control={control}
+            rules={{required: 'Email is required',pattern: {value: EMAIL_REGEX, message: 'Email is invalid'}}}
+        />
+
+        {/* <Text style={styles.label}>Username</Text>
         <CustomInput
           name="username"
           placeholder="Username"
@@ -105,7 +91,7 @@ const SignInScreen = () => {
               message: 'Username can be maximum 25 character long',
             },
           }}
-        />
+        /> */}
 
         <Text style={styles.label}>Password</Text>
         <CustomInput

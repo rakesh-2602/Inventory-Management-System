@@ -16,7 +16,24 @@ const ForgotPasswordScreen = () => {
     const navigation = useNavigation();
 
     const onSendPressed = (data) => {
-      console.warn(data);
+      const doUserPasswordReset = async function () {
+        // Note that this value come from state variables linked to your text input
+        const emailValue = data;
+        return await Parse.User.requestPasswordReset(emailValue)
+          .then(() => {
+            // logIn returns the corresponding ParseUser object
+            Alert.alert(
+              'Success!',
+              `Please check ${email} to proceed with password reset.`,
+            );
+            return true;
+          })
+          .catch((error) => {
+            // Error can be caused by lack of Internet connection
+            Alert.alert('Error!', error.message);
+            return false;
+          });
+      };
 
       navigation.navigate('NewPassword');
     }
