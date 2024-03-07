@@ -25,10 +25,12 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         alignItems: 'center',
         borderRadius: 50,
+        marginTop: 10,
     },
 
     container_PRIMARY:{
-      backgroundColor: '#3B71F3',
+      width: '50%',
+      backgroundColor: 'orange',
     },
 
     container_SECONDARY:{

@@ -5,6 +5,8 @@ import CustomBotton from '../../components/CustomBotton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
 import { useNavigation, validatePathConfig } from '@react-navigation/native';
 import {useForm} from 'react-hook-form';
+import Icons2 from 'react-native-vector-icons/MaterialCommunityIcons'
+import Icons3 from 'react-native-vector-icons/MaterialIcons'
 
 //const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&`*+/=?^_`{|}^-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 const EMAIL_REGEX = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/
@@ -49,7 +51,7 @@ const ForgotPasswordScreen = () => {
     <View style={styles.root}>
         <Text style={styles.title}>Reset your password</Text>
       
-      
+      {/* <Icons2 name="email" size={30}  style={styles.icon}/> */}
       <Text style={styles.label}>Email</Text>
       <CustomInput placeholder='Email' 
            name='email'
@@ -94,6 +96,10 @@ const styles = StyleSheet.create({
       alignSelf: 'stretch',
       color: 'black'
     },
+    icon:{
+      color:'black',
+      alignSelf:'flex-start'
+    }
 })
 
 export default ForgotPasswordScreen

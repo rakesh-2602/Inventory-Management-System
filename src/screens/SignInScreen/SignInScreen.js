@@ -8,13 +8,16 @@ import {
   TextInput,
 } from 'react-native';
 import React, {useState} from 'react';
-import Logo from '../../../assets/images/grocery.jpg';
+import Logo from '../../../assets/images/grocery_logo.png';
 import CustomInput from '../../components/CustomInput';
 import CustomBotton from '../../components/CustomBotton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/native';
 import {useForm, Controller} from 'react-hook-form';
 import auth from '@react-native-firebase/auth';
+import Icons from 'react-native-vector-icons/FontAwesome'
+import Icons2 from 'react-native-vector-icons/MaterialCommunityIcons'
+import Icons3 from 'react-native-vector-icons/MaterialIcons'
 
 //const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&`*+/=?^_`{|}^-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 const EMAIL_REGEX = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/
@@ -68,6 +71,7 @@ const SignInScreen = () => {
           resizeMode="contain"
         />
 
+        {/* { <Icons2 name="email" size={30} style={styles.icon}/> } */}
         <Text style={styles.label}>Email</Text>
         <CustomInput placeholder='Email' 
             name="email"
@@ -92,7 +96,8 @@ const SignInScreen = () => {
             },
           }}
         /> */}
-
+          
+        {/* { <Icons3 name="password" size={30} style={styles.icon}/> } */}
         <Text style={styles.label}>Password</Text>
         <CustomInput
           name="password"
@@ -131,7 +136,7 @@ const SignInScreen = () => {
 const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
-    padding: 10,
+    padding: 15,
   },
   logo: {
     width: '70%',
@@ -142,7 +147,12 @@ const styles = StyleSheet.create({
   label: {
     alignSelf: 'stretch',
     color: 'black',
+    paddingHorizontal:15,
   },
+  icon:{
+    alignSelf:'flex-start',
+    color:'black',
+  }
 });
 
 export default SignInScreen;
