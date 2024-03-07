@@ -15,6 +15,9 @@ import SocialSignInButtons from '../../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/native';
 import {useForm, Controller} from 'react-hook-form';
 import auth from '@react-native-firebase/auth';
+import Dialog from 'react-native-dialog';
+
+
 
 const SignInScreen = () => {
   const {height} = useWindowDimensions();
@@ -55,6 +58,8 @@ const SignInScreen = () => {
     console.warn('on sign-up pressed');
     navigation.navigate('SignUp');
   };
+
+  
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -107,6 +112,7 @@ const SignInScreen = () => {
         />
 
         <SocialSignInButtons />
+       
 
         <CustomBotton
           text="Don't have an account? Create one"
