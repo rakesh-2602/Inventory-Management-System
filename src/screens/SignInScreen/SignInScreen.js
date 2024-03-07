@@ -62,6 +62,8 @@ const SignInScreen = () => {
     navigation.navigate('SignUp');
   };
 
+  
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
@@ -122,6 +124,7 @@ const SignInScreen = () => {
         />
 
         <SocialSignInButtons />
+       
 
         <CustomBotton
           text="Don't have an account? Create one"
