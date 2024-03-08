@@ -12,19 +12,20 @@ import Logo from '../../../assets/images/grocery_logo.png';
 import CustomInput from '../../components/CustomInput';
 import CustomBotton from '../../components/CustomBotton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
-import {useNavigation} from '@react-navigation/native';
+import {StackActions, useNavigation} from '@react-navigation/native';
 import {useForm, Controller} from 'react-hook-form';
 import auth from '@react-native-firebase/auth';
-import Icons from 'react-native-vector-icons/FontAwesome'
-import Icons2 from 'react-native-vector-icons/MaterialCommunityIcons'
-import Icons3 from 'react-native-vector-icons/MaterialIcons'
+import Icons from 'react-native-vector-icons/FontAwesome';
+import Icons2 from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icons3 from 'react-native-vector-icons/MaterialIcons';
 
 //const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&`*+/=?^_`{|}^-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-const EMAIL_REGEX = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/
+const EMAIL_REGEX = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
 
 const SignInScreen = () => {
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
+  const [message, setMessage] = useState('');
 
   const {
     control,
@@ -33,11 +34,12 @@ const SignInScreen = () => {
   } = useForm();
 
   const onSignInPressed = async data => {
+
     await auth()
       .signInWithEmailAndPassword(data.email, data.password)
       .then(() => {
-        console.log('User account created & signed in!');
-        navigation.replace('HomeScreen');
+        console.log('User account signed in!');
+        navigation.dispatch(StackActions.replace('HomeScreen'));
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
@@ -49,6 +51,7 @@ const SignInScreen = () => {
         }
 
         console.error(error);
+        setMessage(error.message);
       });
   };
 
@@ -62,8 +65,6 @@ const SignInScreen = () => {
     navigation.navigate('SignUp');
   };
 
-  
-
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
@@ -75,10 +76,15 @@ const SignInScreen = () => {
 
         {/* { <Icons2 name="email" size={30} style={styles.icon}/> } */}
         <Text style={styles.label}>Email</Text>
-        <CustomInput placeholder='Email' 
-            name="email"
-            control={control}
-            rules={{required: 'Email is required',pattern: {value: EMAIL_REGEX, message: 'Email is invalid'}}}
+        <CustomInput
+          placeholder="Email"
+          name="email"
+          //   value={email}
+          control={control}
+          rules={{
+            required: 'Email is required',
+            pattern: {value: EMAIL_REGEX, message: 'Email is invalid'},
+          }}
         />
 
         {/* <Text style={styles.label}>Username</Text>
@@ -98,7 +104,7 @@ const SignInScreen = () => {
             },
           }}
         /> */}
-          
+
         {/* { <Icons3 name="password" size={30} style={styles.icon}/> } */}
         <Text style={styles.label}>Password</Text>
         <CustomInput
@@ -116,6 +122,7 @@ const SignInScreen = () => {
         />
 
         <CustomBotton text="Sign In" onPress={handleSubmit(onSignInPressed)} />
+        <Text>{message}</Text>
 
         <CustomBotton
           text="Forgot Password"
@@ -124,7 +131,6 @@ const SignInScreen = () => {
         />
 
         <SocialSignInButtons />
-       
 
         <CustomBotton
           text="Don't have an account? Create one"
@@ -150,12 +156,12 @@ const styles = StyleSheet.create({
   label: {
     alignSelf: 'stretch',
     color: 'black',
-    paddingHorizontal:15,
+    paddingHorizontal: 15,
   },
-  icon:{
-    alignSelf:'flex-start',
-    color:'black',
-  }
+  icon: {
+    alignSelf: 'flex-start',
+    color: 'black',
+  },
 });
 
 export default SignInScreen;

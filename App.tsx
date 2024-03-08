@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React,{useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,8 +14,9 @@ import {
 
 import Navigation from './src/navigation';
 
-const App = () => {
 
+const App = () => {
+ 
   return (
     <SafeAreaView style={styles.root}>
     <Navigation></Navigation>
