@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import Logo from '../../../assets/images/grocery_logo.png';
-import CustomInput from '../../components/CustomInput';
-import CustomBotton from '../../components/CustomBotton';
+import CustomInput from '../SignInScreen/SignInCustomInput';
+import CustomBotton from '../SignInScreen/SignInCustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
 import {StackActions, useNavigation} from '@react-navigation/native';
 import {useForm, Controller} from 'react-hook-form';
@@ -74,8 +74,8 @@ const SignInScreen = () => {
           resizeMode="contain"
         />
 
-        {/* { <Icons2 name="email" size={30} style={styles.icon}/> } */}
         <Text style={styles.label}>Email</Text>
+        <Icons2 name="email" size={30} style={styles.icon}/> 
         <CustomInput
           placeholder="Email"
           name="email"
@@ -87,26 +87,8 @@ const SignInScreen = () => {
           }}
         />
 
-        {/* <Text style={styles.label}>Username</Text>
-        <CustomInput
-          name="username"
-          placeholder="Username"
-          control={control}
-          rules={{
-            required: 'Username is required',
-            minLength: {
-              value: 5,
-              message: 'Username should be atleast 5 character long',
-            },
-            maxLength: {
-              value: 50,
-              message: 'Username can be maximum 25 character long',
-            },
-          }}
-        /> */}
-
-        {/* { <Icons3 name="password" size={30} style={styles.icon}/> } */}
         <Text style={styles.label}>Password</Text>
+        <Icons3 name="password" size={30} style={styles.icon}/>    
         <CustomInput
           name="password"
           placeholder="Password"
@@ -145,18 +127,18 @@ const SignInScreen = () => {
 const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
-    padding: 15,
+    padding: 10,
   },
   logo: {
     width: '70%',
     maxWidth: 300,
     maxHeight: 200,
-    padding: 120,
+    padding: 150,
   },
   label: {
     alignSelf: 'stretch',
     color: 'black',
-    paddingHorizontal: 15,
+    paddingHorizontal: 2,
   },
   icon: {
     alignSelf: 'flex-start',

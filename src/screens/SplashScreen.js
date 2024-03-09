@@ -12,7 +12,7 @@ export default function SplashSccreen() {
         const routeName = user !== null ? 'HomeScreen' : 'SignIn';
         navigation.dispatch(StackActions.replace(routeName));
       });
-    }, 3000);
+    }, 2000);
     return () => {};
   }, []);
 

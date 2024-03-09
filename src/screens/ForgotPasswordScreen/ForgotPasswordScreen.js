@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import React,{useState} from 'react';
-import CustomInput from '../../components/CustomInput';
-import CustomBotton from '../../components/CustomBotton';
+import CustomInput from '../ForgotPasswordScreen/ForgotPasswordCustomInput';
+import CustomBotton from '../ForgotPasswordScreen/ForgotPasswordCustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
 import { useNavigation, validatePathConfig } from '@react-navigation/native';
 import {useForm} from 'react-hook-form';
@@ -23,8 +23,10 @@ const ForgotPasswordScreen = () => {
     console.log(email)
     const sendPasswordResetEmail = async () => {
       try {
-        await auth().sendPasswordResetEmail(email);
+        await auth().sendPasswordResetEmail(watch('email'));
+        
         setMessage('Password reset email sent. Check your email inbox.');
+        console.log("Password reset email sent. Check your email inbox.")
       } catch (error) {
         setMessage(error.message);
       }
@@ -41,8 +43,8 @@ const ForgotPasswordScreen = () => {
       <View style={styles.root}>
         <Text style={styles.title}>Reset your password</Text>
 
-        {/* <Icons2 name="email" size={30}  style={styles.icon}/> */}
         <Text style={styles.label}>Email</Text>
+        <Icons2 name="email" size={30}  style={styles.icon}/>  
         <CustomInput
           placeholder="Email"
           name="email"
@@ -89,7 +91,8 @@ const styles = StyleSheet.create({
     },
     label: {
       alignSelf: 'stretch',
-      color: 'black'
+      color: 'black',
+      marginTop: 25,
     },
     icon:{
       color:'black',

@@ -1,11 +1,15 @@
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import React, {useState} from 'react';
-import CustomInput from '../../components/CustomInput';
-import CustomBotton from '../../components/CustomBotton';
+import CustomInput from '../SignUpScreen/SignUpCustomInput';
+import CustomBotton from '../SignUpScreen/SignUpCustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
 import { useNavigation } from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 import {useForm} from 'react-hook-form';
+import Icons from 'react-native-vector-icons/FontAwesome';
+import Icons2 from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icons3 from 'react-native-vector-icons/MaterialIcons';
+
 
 //const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&`*+/=?^_`{|}^-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
@@ -68,6 +72,7 @@ const SignUpScreen = () => {
       <View style={styles.root}>
         <Text style={styles.title}>Create an account</Text>
         <Text style={styles.label}>Username</Text>
+        <Icons name="user" size={30} style={styles.icon}/> 
         <CustomInput
           placeholder="Username"
           name="username"
@@ -85,6 +90,7 @@ const SignUpScreen = () => {
           }}
         />
         <Text style={styles.label}>Email</Text>
+        { <Icons2 name="email" size={30} style={styles.icon}/> }
         <CustomInput
           placeholder="Email"
           name="email"
@@ -95,7 +101,9 @@ const SignUpScreen = () => {
             pattern: {value: EMAIL_REGEX, message: 'Email is invalid'},
           }}
         />
+
         <Text style={styles.label}>Password</Text>
+        <Icons3 name="password" size={30} style={styles.icon}/>       
         <CustomInput
           placeholder="Password"
           name="password"
@@ -109,7 +117,9 @@ const SignUpScreen = () => {
             },
           }}
         />
-        <Text style={styles.label}>Repeat Password</Text>
+
+        <Text style={styles.label}>Re-Password</Text>
+        <Icons3 name="password" size={30} style={styles.icon}/> 
         <CustomInput
           placeholder="Repeat Password"
           name="password-repeat"
@@ -157,6 +167,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#051C60',
     margin: 10,
+    marginVertical:55,
   },
   text: {
     color: 'gray',
@@ -168,7 +179,12 @@ const styles = StyleSheet.create({
   label: {
     alignSelf: 'stretch',
     color: 'black',
+    marginVertical:1,
   },
+  icon:{
+    color:'black',
+    alignSelf:'flex-start'
+  }
 });
 
 export default SignUpScreen;
