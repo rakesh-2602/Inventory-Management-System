@@ -47,9 +47,6 @@ const index = () => {
 
   return (
     <View>
-      <Text style={{fontSize: 24, alignSelf: 'center'}}>
-        WELCOME TO INVENTORY MANAGEMENT
-      </Text>
 
       <CustomBotton
         text="Log Out"
@@ -72,27 +69,23 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     backgroundColor: 'orange',
   },
-
-  // container_SECONDARY:{
-  //   backgroundColor: '#F9FBFC',
-  //   borderColor: '#3B71F3',
-  //   borderWidth: 2
-  // },
-
-  // container_TERTIARY:{},
-
   text: {
     fontWeight: 'bold',
     color: 'white',
   },
-
-  // text_TERTIARY:{
-  //   color: 'gray',
-  // },
-
-  // text_SECONDARY:{
-  //   color: 'blue',
-  // }
 });
 
-export default index;
+ export default index;
+
+// /* =====================New Program====================== */
+
+// import React from 'react'
+// import "./home.scss"
+
+// const Home = () => {
+//   return (
+//     <div className='home'>Home</div>
+//   )
+// }
+
+// export default Home
